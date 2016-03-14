@@ -1,0 +1,17 @@
+body {
+  background: #ede0ce;
+  color: #292929;
+  font-family: 'Old Standard TT', serif;
+}
+
+h1 {
+  font-size: 300%;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.App-mainContent {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
