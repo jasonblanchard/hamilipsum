@@ -1,5 +1,4 @@
 import { hashHistory } from 'react-router';
-import pluralize from 'pluralize';
 import React, { Component, PropTypes } from 'react';
 import './App.scss';
 
@@ -14,15 +13,17 @@ class App extends Component {
   render() {
     const { amount, unit } = this.props.params;
     return (
-      <div className="App-mainContent">
+      <div className="App">
         <h1>Hamil Ipsum</h1>
         <div className="subtitle">
           Sourced from the writings of
         </div>
         <div className="large-subtitle">Alexander Hamilton</div>
-        <div>
+        <div role="main">
           {amount ? null : <TextSelector onClick={this.handleClickSelectText} />}
-          Generate {amount} {unit}
+          <div>
+            {amount ? `Generate ${amount} ${unit}` : null}
+          </div>
         </div>
       </div>
     );

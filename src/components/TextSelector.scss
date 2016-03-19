@@ -1,4 +1,7 @@
 .TextSelector {
+  width: 100%;
+  max-width: 400px;
+
   button {
     background: #ABABAB;
     border: 0;
@@ -9,8 +12,13 @@
   }
 }
 
+.TextSelector-words {
+  display: flex;
+  margin-bottom: 5px;
+}
+
 .TextSelector-wordsButton {
-  width: 80px;
+  flex: 1;
   margin-right: 8px;
   height: 15px;
 
