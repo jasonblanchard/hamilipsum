@@ -1,0 +1,31 @@
+.TextSelector {
+  button {
+    background: #ABABAB;
+    border: 0;
+
+    &.TextSelector-selected {
+      background: #80A1DE;
+    }
+  }
+}
+
+.TextSelector-wordsButton {
+  width: 80px;
+  margin-right: 8px;
+  height: 15px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.TextSelector-sentencesButton, .TextSelector-paragraphsButton {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 15px;
+}
+
+.TextSelector-paragraphsButton {
+  height: 35px;
+}

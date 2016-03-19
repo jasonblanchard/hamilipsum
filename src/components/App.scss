@@ -4,14 +4,34 @@ body {
   font-family: 'Old Standard TT', serif;
 }
 
-h1 {
-  font-size: 300%;
+h1, h2, .subtitle {
   font-weight: normal;
   text-transform: uppercase;
+  margin: 0;
+}
+
+h1 {
+  font-size: 300%;
+}
+
+.subtitle {
+  font-size: 100%;
+}
+
+.large-subtitle {
+  font-size: 250%;
 }
 
 .App-mainContent {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }

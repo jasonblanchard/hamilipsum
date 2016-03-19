@@ -5,7 +5,7 @@ import App from './components/app';
 
 export default (
   <Route path="/">
-    <Route path="/:quantity/:unit" component={App} />
+    <Route path="/:amount/:unit" component={App} />
     <IndexRoute component={App} />
   </Route>
 );
