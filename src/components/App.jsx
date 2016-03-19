@@ -53,6 +53,18 @@ class App extends Component {
     hashHistory.push(`${amount}/${unit}`);
   }
 
+  formatText(text) {
+    const formattedText = text.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+    return {
+      __html: formattedText,
+    };
+  }
+
+  renderText() {
+    if (!this.props.params.amount) return null;
+    return <div className="App-text" dangerouslySetInnerHTML={this.formatText(this.state.text)} />;
+  }
+
   render() {
     const { amount } = this.props.params;
     return (
@@ -64,9 +76,7 @@ class App extends Component {
         <div className="large-subtitle">Alexander Hamilton</div>
         <div role="main">
           {amount ? <Dropdown isOpen={this.state.showMenu} onClick={this.handleClickDropdown}><TextSelector onClick={this.handleClickSelectText} /></Dropdown> : <TextSelector onClick={this.handleClickSelectText} />}
-          <div>
-            {amount ? this.state.text : null}
-          </div>
+          {this.renderText()}
         </div>
       </div>
     );
