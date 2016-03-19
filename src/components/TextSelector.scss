@@ -6,6 +6,11 @@
     background: #ABABAB;
     border: 0;
 
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #80A1DE;
+    }
+
     &.TextSelector-selected {
       background: #80A1DE;
     }
@@ -32,6 +37,10 @@
   width: 100%;
   margin-bottom: 5px;
   height: 15px;
+
+  &:last-child {
+    margin: 0;
+  }
 }
 
 .TextSelector-paragraphsButton {

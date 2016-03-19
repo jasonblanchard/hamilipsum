@@ -4,6 +4,14 @@ body {
   font-family: 'Old Standard TT', serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
 h1, h2, .subtitle {
   font-weight: normal;
   text-transform: uppercase;
@@ -12,6 +20,10 @@ h1, h2, .subtitle {
 
 h1 {
   font-size: 300%;
+}
+
+button {
+  font-family: 'Old Standard TT', serif;
 }
 
 .subtitle {
@@ -33,6 +45,7 @@ h1 {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .show-for-sr {
