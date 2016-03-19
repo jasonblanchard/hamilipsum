@@ -2,6 +2,7 @@ import { hashHistory } from 'react-router';
 import React, { Component, PropTypes } from 'react';
 
 import Dropdown from './Dropdown';
+import hamilipsum from '../../lib/hamilipsum';
 import TextSelector from './TextSelector';
 
 import './App.scss';
@@ -11,15 +12,33 @@ class App extends Component {
     super(props);
     this.state = {
       showMenu: false,
+      text: '',
     };
     this.handleClickSelectText = this.handleClickSelectText.bind(this);
     this.handleClickDropdown = this.handleClickDropdown.bind(this);
     this.handleCloseMenu = this.handleCloseMenu.bind(this);
   }
 
-  handleClickSelectText(selection) {
-    const { amount, unit } = selection;
-    hashHistory.push(`${amount}/${unit}`);
+  componentWillMount() {
+    const { amount, unit } = this.props.params;
+    if (amount && unit) {
+      this.setState({
+        text: hamilipsum.generate(amount, unit),
+      });
+    }
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.params !== this.props.params) {
+      const { amount, unit } = nextProps.params;
+      this.setState({
+        text: hamilipsum.generate(amount, unit),
+      });
+    }
+  }
+
+  handleCloseMenu() {
+    this.setState({ showMenu: false });
   }
 
   handleClickDropdown(event) {
@@ -29,12 +48,13 @@ class App extends Component {
     });
   }
 
-  handleCloseMenu() {
-    this.setState({ showMenu: false });
+  handleClickSelectText(selection) {
+    const { amount, unit } = selection;
+    hashHistory.push(`${amount}/${unit}`);
   }
 
   render() {
-    const { amount, unit } = this.props.params;
+    const { amount } = this.props.params;
     return (
       <div className="App" onClick={this.handleCloseMenu}>
         <h1>Hamil Ipsum</h1>
@@ -45,7 +65,7 @@ class App extends Component {
         <div role="main">
           {amount ? <Dropdown isOpen={this.state.showMenu} onClick={this.handleClickDropdown}><TextSelector onClick={this.handleClickSelectText} /></Dropdown> : <TextSelector onClick={this.handleClickSelectText} />}
           <div>
-            {amount ? `Generate ${amount} ${unit}` : null}
+            {amount ? this.state.text : null}
           </div>
         </div>
       </div>
