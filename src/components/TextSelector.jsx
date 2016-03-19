@@ -32,7 +32,7 @@ export default class TextSelector extends Component {
     return times(5, index => {
       const highlighted = (this.state.unit === ('word') && this.state.amount >= index + 1);
       const className = classNames('TextSelector-wordsButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'word')} onClick={this.handleClick}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
+      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'word')} onFocus={this.handleMouseOver.bind(this, index, 'word')} onClick={this.handleClick}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
     });
   }
 
@@ -40,7 +40,7 @@ export default class TextSelector extends Component {
     return times(5, index => {
       const highlighted = (this.state.unit === 'sentence' && this.state.amount >= index + 1);
       const className = classNames('TextSelector-sentencesButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'sentence')} onClick={this.handleClick}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
+      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'sentence')} onClick={this.handleClick} onFocus={this.handleMouseOver.bind(this, index, 'sentence')}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
     });
   }
 
@@ -48,7 +48,7 @@ export default class TextSelector extends Component {
     return times(5, index => {
       const highlighted = (this.state.unit === 'paragraph' && this.state.amount >= index + 1);
       const className = classNames('TextSelector-paragraphsButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'paragraph')} onClick={this.handleClick}><span className="show-for-sr">{`${index + 1} paragraph`}</span></button>;
+      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'paragraph')} onClick={this.handleClick} onFocus={this.handleMouseOver.bind(this, index, 'paragraph')}><span className="show-for-sr">{`${index + 1} paragraph`}</span></button>;
     });
   }
 
