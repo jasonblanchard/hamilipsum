@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import times from 'lodash.times';
-import pluralize from 'pluralize';
 import React, { Component, PropTypes } from 'react';
 
 import './TextSelector.scss';
@@ -8,55 +7,65 @@ import './TextSelector.scss';
 export default class TextSelector extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.props = {
       amount: 0,
       unit: null,
     };
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleHoverOut = this.handleHoverOut.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleMouseOver(index, unit) {
-    this.setState({ amount: index + 1, unit });
+  handleHover(index, unit) {
+    this.props.onHoverSelection({ amount: index + 1, unit });
   }
 
-  handleMouseLeave() {
-    this.setState({ amount: 0, unit: null });
+  handleHoverOut() {
+    this.props.onHoverSelection({ amount: 0, unit: null });
   }
 
   handleClick() {
-    this.props.onClick(this.state);
+    this.props.onClickSelection();
   }
 
   renderWords() {
     return times(5, index => {
-      const highlighted = (this.state.unit === ('word') && this.state.amount >= index + 1);
+      const highlighted = (this.props.unit === ('word') && this.props.amount >= index + 1);
       const className = classNames('TextSelector-wordsButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'word')} onFocus={this.handleMouseOver.bind(this, index, 'word')} onClick={this.handleClick}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
+      return (
+        <button className={className} key={index} onMouseOver={this.handleHover.bind(this, index, 'word')} onFocus={this.handleHover.bind(this, index, 'word')} onClick={this.handleClick}>
+          <span className="show-for-sr">{`${index + 1} word`}</span>
+        </button>
+      );
     });
   }
 
   renderSentences() {
     return times(5, index => {
-      const highlighted = (this.state.unit === 'sentence' && this.state.amount >= index + 1);
+      const highlighted = (this.props.unit === 'sentence' && this.props.amount >= index + 1);
       const className = classNames('TextSelector-sentencesButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'sentence')} onClick={this.handleClick} onFocus={this.handleMouseOver.bind(this, index, 'sentence')}><span className="show-for-sr">{`${index + 1} word`}</span></button>;
+      return (
+        <button className={className} key={index} onMouseOver={this.handleHover.bind(this, index, 'sentence')} onFocus={this.handleHover.bind(this, index, 'sentence')} onClick={this.handleClick}>
+          <span className="show-for-sr">{`${index + 1} word`}</span>
+        </button>
+      );
     });
   }
 
   renderParagraphs() {
     return times(5, index => {
-      const highlighted = (this.state.unit === 'paragraph' && this.state.amount >= index + 1);
+      const highlighted = (this.props.unit === 'paragraph' && this.props.amount >= index + 1);
       const className = classNames('TextSelector-paragraphsButton', { 'TextSelector-selected': highlighted });
-      return <button className={className} key={index} onMouseOver={this.handleMouseOver.bind(this, index, 'paragraph')} onClick={this.handleClick} onFocus={this.handleMouseOver.bind(this, index, 'paragraph')}><span className="show-for-sr">{`${index + 1} paragraph`}</span></button>;
+      return (
+        <button className={className} key={index} onMouseOver={this.handleHover.bind(this, index, 'paragraph')} onFocus={this.handleHover.bind(this, index, 'paragraph')} onClick={this.handleClick}>
+          <span className="show-for-sr">{`${index + 1} paragraph`}</span>
+        </button>
+      );
     });
   }
 
   render() {
-    const { amount, unit } = this.state;
     return (
-      <div className="TextSelector" onMouseLeave={this.handleMouseLeave}>
-        <span>{this.state.unit ? `${amount} ${pluralize(unit, amount)}` : 'Choose Amount'}</span>
+      <div className="TextSelector" onMouseLeave={this.handleHoverOut}>
         <div className="TextSelector-words">
           {this.renderWords()}
         </div>
@@ -68,9 +77,13 @@ export default class TextSelector extends Component {
 }
 
 TextSelector.propTypes = {
-  onClick: PropTypes.func,
+  amount: PropTypes.number,
+  onClickSelection: PropTypes.func.isRequired,
+  onHoverSelection: PropTypes.func.isRequired,
+  unit: PropTypes.string,
 };
 
 TextSelector.defaultProps = {
-  onClick: () => {},
+  onClickSelection: () => {},
+  onHoverSelection: () => {},
 };

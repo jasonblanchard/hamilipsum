@@ -16,9 +16,6 @@
 }
 
 .App-text {
-  font-family: 'IM Fell English', serif;
-  font-size: 120%;
-  line-height: 26px;
   margin-top: 80px;
 
   p {
@@ -31,4 +28,22 @@
     font-size: 200%;
     font-weight: bold;
   }
+}
+
+.App-footer {
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+}
+
+.App-initialSelectContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  margin-top: 50px;
+  width: 100%;
 }

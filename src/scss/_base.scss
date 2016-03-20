@@ -12,6 +12,18 @@ html, body, #app {
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+
+  &, &:visited {
+    color: #806422;
+  }
+
+  &:hover {
+     text-decoration: underline;
+  }
+}
+
 h1, h2, .subtitle {
   font-weight: normal;
   text-transform: uppercase;
@@ -39,4 +51,10 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+p {
+  font-family: 'IM Fell English', serif;
+  font-size: 120%;
+  line-height: 26px;
 }
