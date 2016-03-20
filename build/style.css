@@ -1,0 +1,230 @@
+.About {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 50px; }
+  .About [role="main"] {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+                -ms-grid-row-align: flex-start;
+            align-items: flex-start; }
+.Dropdown {
+  width: 100%;
+  text-align: center;
+  position: relative; }
+  .Dropdown > button {
+    font-size: 90%;
+    font-weight: normal;
+    background: #EFE7DC;
+    font-style: italic;
+    border: 0;
+    border: 1px solid rgba(136, 136, 136, 0.45);
+    border-radius: 4px;
+    max-width: 400px;
+    width: 100%;
+    padding: 8px;
+    height: 36px; }
+    .Dropdown > button:focus {
+      outline: none;
+      border-color: #80A1DE; }
+  .Dropdown.isOpen > button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid rgba(136, 136, 136, 0.45);
+    border-bottom: 1px solid rgba(136, 136, 136, 0.12); }
+
+.Dropdown-menu {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #EFE7DC;
+  border-radius-bottom-left: 2px;
+  border-radius-bottom-right: 2px;
+  border: 1px solid rgba(136, 136, 136, 0.45);
+  border-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 8px;
+  position: absolute;
+  right: 0;
+  width: 100%; }
+.TextSelector {
+  width: 100%;
+  max-width: 400px; }
+  .TextSelector button {
+    background: #ABABAB;
+    border: 0; }
+    .TextSelector button:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #80A1DE; }
+    .TextSelector button.TextSelector-selected {
+      background: #80A1DE; }
+
+.TextSelector-words {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 5px; }
+
+.TextSelector-wordsButton {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 8px;
+  height: 15px; }
+  .TextSelector-wordsButton:last-child {
+    margin: 0; }
+
+.TextSelector-sentencesButton, .TextSelector-paragraphsButton {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 15px; }
+  .TextSelector-sentencesButton:last-child, .TextSelector-paragraphsButton:last-child {
+    margin: 0; }
+
+.TextSelector-paragraphsButton {
+  height: 35px; }
+body {
+  background: #ede0ce;
+  color: #292929;
+  font-family: 'Old Standard TT', serif; }
+
+* {
+  box-sizing: border-box; }
+
+html, body, #app {
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+  a, a:visited {
+    color: #806422; }
+  a:hover {
+    text-decoration: underline; }
+
+h1, h2, .subtitle {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0; }
+
+h1 {
+  font-size: 300%; }
+
+button {
+  font-family: 'Old Standard TT', serif; }
+
+.subtitle {
+  font-size: 100%; }
+
+.large-subtitle {
+  font-size: 250%; }
+
+[role="main"] {
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+p {
+  font-family: 'IM Fell English', serif;
+  font-size: 120%;
+  line-height: 26px; }
+
+.App {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%; }
+
+.show-for-sr {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px; }
+
+.App-text {
+  margin-top: 80px; }
+  .App-text p {
+    text-indent: 50px;
+    margin: 0; }
+  .App-text::first-letter {
+    color: #464545;
+    font-size: 200%;
+    font-weight: bold; }
+
+.App-footer {
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 20px;
+  position: fixed;
+  width: 100%; }
+
+.App-initialSelectContainer {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-style: italic;
+  margin-top: 50px;
+  width: 100%; }
