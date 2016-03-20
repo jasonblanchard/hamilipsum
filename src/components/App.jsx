@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 
 import Dropdown from './Dropdown';
 import hamilipsum from '../../lib/hamilipsum';
+import isEqual from 'lodash.isequal';
 import TextSelector from './TextSelector';
 
 import './App.scss';
@@ -19,18 +20,10 @@ class App extends Component {
     this.handleCloseMenu = this.handleCloseMenu.bind(this);
   }
 
+
   componentWillMount() {
     const { amount, unit } = this.props.params;
     if (amount && unit) {
-      this.setState({
-        text: hamilipsum.generate(amount, unit),
-      });
-    }
-  }
-
-  componentWillUpdate(nextProps) {
-    if (nextProps.params !== this.props.params) {
-      const { amount, unit } = nextProps.params;
       this.setState({
         text: hamilipsum.generate(amount, unit),
       });
@@ -51,6 +44,9 @@ class App extends Component {
   handleClickSelectText(selection) {
     const { amount, unit } = selection;
     hashHistory.push(`${amount}/${unit}`);
+    this.setState({
+      text: hamilipsum.generate(amount, unit),
+    });
   }
 
   formatText(text) {
@@ -75,7 +71,7 @@ class App extends Component {
         </div>
         <div className="large-subtitle">Alexander Hamilton</div>
         <div role="main">
-          {amount ? <Dropdown isOpen={this.state.showMenu} onClick={this.handleClickDropdown}><TextSelector onClick={this.handleClickSelectText} /></Dropdown> : <TextSelector onClick={this.handleClickSelectText} />}
+          {amount ? <Dropdown isOpen={this.state.showMenu} onClick={this.handleClickDropdown} buttonText="Generate"><TextSelector onClick={this.handleClickSelectText} /></Dropdown> : <TextSelector onClick={this.handleClickSelectText} />}
           {this.renderText()}
         </div>
       </div>

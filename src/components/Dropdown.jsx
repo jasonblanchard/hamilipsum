@@ -17,7 +17,7 @@ export default class Dropdown extends Component {
     const className = classNames('Dropdown', { isOpen: this.props.isOpen });
     return (
       <div className={className}>
-        <button onClick={this.props.onClick}>Generate</button>
+        <button onClick={this.props.onClick}>{this.props.buttonText}</button>
         {this.renderMenu()}
       </div>
     );
@@ -25,6 +25,7 @@ export default class Dropdown extends Component {
 }
 
 Dropdown.propTypes = {
+  buttonText: PropTypes.string,
   children: PropTypes.node,
   isOpen: PropTypes.bool,
   onClick: PropTypes.func,
