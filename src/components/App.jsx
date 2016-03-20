@@ -112,7 +112,7 @@ class App extends Component {
       <div className="App" onClick={this.handleCloseMenu}>
         <h1>Hamil Ipsum</h1>
         <div className="subtitle">
-          Sourced from the writings of
+          A random text generator sourced from the writings of
         </div>
         <div className="large-subtitle">Alexander Hamilton</div>
         <div role="main">

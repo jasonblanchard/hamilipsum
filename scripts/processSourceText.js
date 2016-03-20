@@ -5,7 +5,7 @@ import path from 'path';
 fs.readFile(path.resolve(`${__dirname}/../text/source.txt`), (err, data) => {
   const output = data
             .toString()
-            .replace(/[.,\/#!$%\^&\*;:{}=_`~()]/g, ' ')
+            .replace(/[.,\/#!$\?%\^&\*;:{}=_`~()]/g, ' ')
             .replace(/\r?\n|\r/g, ' ')
             .toLowerCase()
             .split(' ')
