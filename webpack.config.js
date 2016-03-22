@@ -12,6 +12,13 @@ module.exports = {
     new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'eslint',
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'lib')],
+      },
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
